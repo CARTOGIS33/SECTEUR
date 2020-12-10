@@ -36,13 +36,14 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/COMM_secteur_2.js"></script>
-        <script src="data/RayonTravail_3.js"></script>
-        <script src="data/MAISON_4.js"></script>
-        <script src="data/PLANDEGENESONOREAERIEN_5.js"></script>
+        <script src="data/VOIEFERREE_3.js"></script>
+        <script src="data/RayonTravail_4.js"></script>
+        <script src="data/MAISON_5.js"></script>
+        <script src="data/PLANDEGENESONOREAERIEN_6.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.69051231929539,-0.8830436233713407],[44.84164460936545,-0.5165783218809218]]);
+        }).fitBounds([[44.626518954895175,-1.0642366907052794],[44.928765118867034,-0.3311635863922399]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -112,7 +113,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(164,113,88,0.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_COMM_secteur_2');
@@ -120,7 +121,7 @@
         map.getPane('pane_COMM_secteur_2').style['mix-blend-mode'] = 'normal';
         var layer_COMM_secteur_2 = new L.geoJson(json_COMM_secteur_2, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_COMM_secteur_2',
             layerName: 'layer_COMM_secteur_2',
             pane: 'pane_COMM_secteur_2',
@@ -129,7 +130,73 @@
         });
         bounds_group.addLayer(layer_COMM_secteur_2);
         map.addLayer(layer_COMM_secteur_2);
-        function pop_RayonTravail_3(feature, layer) {
+        function pop_VOIEFERREE_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gid'] !== null ? autolinker.link(feature.properties['gid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geom_err'] !== null ? autolinker.link(feature.properties['geom_err'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nom'] !== null ? autolinker.link(feature.properties['nom'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['source'] !== null ? autolinker.link(feature.properties['source'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['usagevoi'] !== null ? autolinker.link(feature.properties['usagevoi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['desilign'] !== null ? autolinker.link(feature.properties['desilign'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['typelign'] !== null ? autolinker.link(feature.properties['typelign'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cdate'] !== null ? autolinker.link(feature.properties['cdate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['mdate'] !== null ? autolinker.link(feature.properties['mdate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['code_commun'] !== null ? autolinker.link(feature.properties['code_commun'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VOIEFERREE_3_0() {
+            return {
+                pane: 'pane_VOIEFERREE_3',
+                opacity: 1,
+                color: 'rgba(153,73,26,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_VOIEFERREE_3');
+        map.getPane('pane_VOIEFERREE_3').style.zIndex = 403;
+        map.getPane('pane_VOIEFERREE_3').style['mix-blend-mode'] = 'normal';
+        var layer_VOIEFERREE_3 = new L.geoJson(json_VOIEFERREE_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_VOIEFERREE_3',
+            layerName: 'layer_VOIEFERREE_3',
+            pane: 'pane_VOIEFERREE_3',
+            onEachFeature: pop_VOIEFERREE_3,
+            style: style_VOIEFERREE_3_0,
+        });
+        bounds_group.addLayer(layer_VOIEFERREE_3);
+        map.addLayer(layer_VOIEFERREE_3);
+        function pop_RayonTravail_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
@@ -144,11 +211,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_RayonTravail_3_0(feature) {
+        function style_RayonTravail_4_0(feature) {
             switch(String(feature.properties['Rayon'])) {
                 case '5000':
                     return {
-                pane: 'pane_RayonTravail_3',
+                pane: 'pane_RayonTravail_4',
                 opacity: 1,
                 color: 'rgba(8,244,59,0.9)',
                 dashArray: '',
@@ -156,14 +223,14 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.3,
+                fillOpacity: 0.4,
                 fillColor: 'rgba(78,227,140,0.9)',
                 interactive: false,
             }
                     break;
                 case '10000':
                     return {
-                pane: 'pane_RayonTravail_3',
+                pane: 'pane_RayonTravail_4',
                 opacity: 1,
                 color: 'rgba(26,96,32,0.9)',
                 dashArray: '',
@@ -171,14 +238,14 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.3,
+                fillOpacity: 0.4,
                 fillColor: 'rgba(0,85,0,0.9)',
                 interactive: false,
             }
                     break;
                 case '15000':
                     return {
-                pane: 'pane_RayonTravail_3',
+                pane: 'pane_RayonTravail_4',
                 opacity: 1,
                 color: 'rgba(255,127,0,0.9)',
                 dashArray: '',
@@ -186,14 +253,14 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.3,
+                fillOpacity: 0.4,
                 fillColor: 'rgba(255,170,0,0.9)',
                 interactive: false,
             }
                     break;
                 case '20000':
                     return {
-                pane: 'pane_RayonTravail_3',
+                pane: 'pane_RayonTravail_4',
                 opacity: 1,
                 color: 'rgba(248,89,100,0.9)',
                 dashArray: '',
@@ -201,14 +268,14 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.3,
+                fillOpacity: 0.4,
                 fillColor: 'rgba(248,89,100,0.9)',
                 interactive: false,
             }
                     break;
                 case '25000':
                     return {
-                pane: 'pane_RayonTravail_3',
+                pane: 'pane_RayonTravail_4',
                 opacity: 1,
                 color: 'rgba(255,0,0,0.9)',
                 dashArray: '',
@@ -216,28 +283,28 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.3,
+                fillOpacity: 0.4,
                 fillColor: 'rgba(255,0,0,0.9)',
                 interactive: false,
             }
                     break;
             }
         }
-        map.createPane('pane_RayonTravail_3');
-        map.getPane('pane_RayonTravail_3').style.zIndex = 403;
-        map.getPane('pane_RayonTravail_3').style['mix-blend-mode'] = 'multiply';
-        var layer_RayonTravail_3 = new L.geoJson(json_RayonTravail_3, {
+        map.createPane('pane_RayonTravail_4');
+        map.getPane('pane_RayonTravail_4').style.zIndex = 404;
+        map.getPane('pane_RayonTravail_4').style['mix-blend-mode'] = 'multiply';
+        var layer_RayonTravail_4 = new L.geoJson(json_RayonTravail_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_RayonTravail_3',
-            layerName: 'layer_RayonTravail_3',
-            pane: 'pane_RayonTravail_3',
-            onEachFeature: pop_RayonTravail_3,
-            style: style_RayonTravail_3_0,
+            dataVar: 'json_RayonTravail_4',
+            layerName: 'layer_RayonTravail_4',
+            pane: 'pane_RayonTravail_4',
+            onEachFeature: pop_RayonTravail_4,
+            style: style_RayonTravail_4_0,
         });
-        bounds_group.addLayer(layer_RayonTravail_3);
-        map.addLayer(layer_RayonTravail_3);
-        function pop_MAISON_4(feature, layer) {
+        bounds_group.addLayer(layer_RayonTravail_4);
+        map.addLayer(layer_RayonTravail_4);
+        function pop_MAISON_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
@@ -249,11 +316,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_MAISON_4_0(feature) {
+        function style_MAISON_5_0(feature) {
             switch(String(feature.properties['Maison'])) {
                 case 'Nous':
                     return {
-                pane: 'pane_MAISON_4',
+                pane: 'pane_MAISON_5',
                 shape: 'triangle',
                 radius: 12.0,
                 opacity: 1,
@@ -270,7 +337,7 @@
                     break;
                 case 'Travail MAMAN':
                     return {
-                pane: 'pane_MAISON_4',
+                pane: 'pane_MAISON_5',
                 shape: 'triangle',
                 radius: 12.0,
                 opacity: 1,
@@ -287,7 +354,7 @@
                     break;
                 case 'Travail PAPA':
                     return {
-                pane: 'pane_MAISON_4',
+                pane: 'pane_MAISON_5',
                 shape: 'triangle',
                 radius: 12.0,
                 opacity: 1,
@@ -304,27 +371,27 @@
                     break;
             }
         }
-        map.createPane('pane_MAISON_4');
-        map.getPane('pane_MAISON_4').style.zIndex = 404;
-        map.getPane('pane_MAISON_4').style['mix-blend-mode'] = 'normal';
-        var layer_MAISON_4 = new L.geoJson(json_MAISON_4, {
+        map.createPane('pane_MAISON_5');
+        map.getPane('pane_MAISON_5').style.zIndex = 405;
+        map.getPane('pane_MAISON_5').style['mix-blend-mode'] = 'normal';
+        var layer_MAISON_5 = new L.geoJson(json_MAISON_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MAISON_4',
-            layerName: 'layer_MAISON_4',
-            pane: 'pane_MAISON_4',
-            onEachFeature: pop_MAISON_4,
+            dataVar: 'json_MAISON_5',
+            layerName: 'layer_MAISON_5',
+            pane: 'pane_MAISON_5',
+            onEachFeature: pop_MAISON_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_MAISON_4_0(feature));
+                return L.shapeMarker(latlng, style_MAISON_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_MAISON_4);
-        map.addLayer(layer_MAISON_4);
-        function pop_PLANDEGENESONOREAERIEN_5(feature, layer) {
+        bounds_group.addLayer(layer_MAISON_5);
+        map.addLayer(layer_MAISON_5);
+        function pop_PLANDEGENESONOREAERIEN_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
@@ -339,11 +406,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_PLANDEGENESONOREAERIEN_5_0(feature) {
+        function style_PLANDEGENESONOREAERIEN_6_0(feature) {
             switch(String(feature.properties['ZONE'])) {
                 case '1':
                     return {
-                pane: 'pane_PLANDEGENESONOREAERIEN_5',
+                pane: 'pane_PLANDEGENESONOREAERIEN_6',
                 opacity: 1,
                 color: 'rgba(77,175,74,0.0)',
                 dashArray: '',
@@ -358,7 +425,7 @@
                     break;
                 case '2':
                     return {
-                pane: 'pane_PLANDEGENESONOREAERIEN_5',
+                pane: 'pane_PLANDEGENESONOREAERIEN_6',
                 opacity: 1,
                 color: 'rgba(77,175,74,0.0)',
                 dashArray: '',
@@ -373,7 +440,7 @@
                     break;
                 case '3':
                     return {
-                pane: 'pane_PLANDEGENESONOREAERIEN_5',
+                pane: 'pane_PLANDEGENESONOREAERIEN_6',
                 opacity: 1,
                 color: 'rgba(77,175,74,0.0)',
                 dashArray: '',
@@ -388,20 +455,20 @@
                     break;
             }
         }
-        map.createPane('pane_PLANDEGENESONOREAERIEN_5');
-        map.getPane('pane_PLANDEGENESONOREAERIEN_5').style.zIndex = 405;
-        map.getPane('pane_PLANDEGENESONOREAERIEN_5').style['mix-blend-mode'] = 'normal';
-        var layer_PLANDEGENESONOREAERIEN_5 = new L.geoJson(json_PLANDEGENESONOREAERIEN_5, {
+        map.createPane('pane_PLANDEGENESONOREAERIEN_6');
+        map.getPane('pane_PLANDEGENESONOREAERIEN_6').style.zIndex = 406;
+        map.getPane('pane_PLANDEGENESONOREAERIEN_6').style['mix-blend-mode'] = 'normal';
+        var layer_PLANDEGENESONOREAERIEN_6 = new L.geoJson(json_PLANDEGENESONOREAERIEN_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_PLANDEGENESONOREAERIEN_5',
-            layerName: 'layer_PLANDEGENESONOREAERIEN_5',
-            pane: 'pane_PLANDEGENESONOREAERIEN_5',
-            onEachFeature: pop_PLANDEGENESONOREAERIEN_5,
-            style: style_PLANDEGENESONOREAERIEN_5_0,
+            dataVar: 'json_PLANDEGENESONOREAERIEN_6',
+            layerName: 'layer_PLANDEGENESONOREAERIEN_6',
+            pane: 'pane_PLANDEGENESONOREAERIEN_6',
+            onEachFeature: pop_PLANDEGENESONOREAERIEN_6,
+            style: style_PLANDEGENESONOREAERIEN_6_0,
         });
-        bounds_group.addLayer(layer_PLANDEGENESONOREAERIEN_5);
-        map.addLayer(layer_PLANDEGENESONOREAERIEN_5);
+        bounds_group.addLayer(layer_PLANDEGENESONOREAERIEN_6);
+        map.addLayer(layer_PLANDEGENESONOREAERIEN_6);
         map.on("zoomend", function(e) {
             if (map.getZoom() <= 19 && map.getZoom() >= 14) {
                 map.addLayer(layer_GoogleHybrid_0);
@@ -419,14 +486,19 @@
                 map.removeLayer(layer_COMM_secteur_2);
             }
             if (map.getZoom() <= 19 && map.getZoom() >= 12) {
-                map.addLayer(layer_RayonTravail_3);
+                map.addLayer(layer_VOIEFERREE_3);
             } else if (map.getZoom() > 19 || map.getZoom() < 12) {
-                map.removeLayer(layer_RayonTravail_3);
+                map.removeLayer(layer_VOIEFERREE_3);
+            }
+            if (map.getZoom() <= 19 && map.getZoom() >= 11) {
+                map.addLayer(layer_RayonTravail_4);
+            } else if (map.getZoom() > 19 || map.getZoom() < 11) {
+                map.removeLayer(layer_RayonTravail_4);
             }
             if (map.getZoom() <= 19 && map.getZoom() >= 12) {
-                map.addLayer(layer_PLANDEGENESONOREAERIEN_5);
+                map.addLayer(layer_PLANDEGENESONOREAERIEN_6);
             } else if (map.getZoom() > 19 || map.getZoom() < 12) {
-                map.removeLayer(layer_PLANDEGENESONOREAERIEN_5);
+                map.removeLayer(layer_PLANDEGENESONOREAERIEN_6);
             }
         });
             if (map.getZoom() <= 19 && map.getZoom() >= 14) {
@@ -445,14 +517,19 @@
                 map.removeLayer(layer_COMM_secteur_2);
             }
             if (map.getZoom() <= 19 && map.getZoom() >= 12) {
-                map.addLayer(layer_RayonTravail_3);
+                map.addLayer(layer_VOIEFERREE_3);
             } else if (map.getZoom() > 19 || map.getZoom() < 12) {
-                map.removeLayer(layer_RayonTravail_3);
+                map.removeLayer(layer_VOIEFERREE_3);
+            }
+            if (map.getZoom() <= 19 && map.getZoom() >= 11) {
+                map.addLayer(layer_RayonTravail_4);
+            } else if (map.getZoom() > 19 || map.getZoom() < 11) {
+                map.removeLayer(layer_RayonTravail_4);
             }
             if (map.getZoom() <= 19 && map.getZoom() >= 12) {
-                map.addLayer(layer_PLANDEGENESONOREAERIEN_5);
+                map.addLayer(layer_PLANDEGENESONOREAERIEN_6);
             } else if (map.getZoom() > 19 || map.getZoom() < 12) {
-                map.removeLayer(layer_PLANDEGENESONOREAERIEN_5);
+                map.removeLayer(layer_PLANDEGENESONOREAERIEN_6);
             }
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
@@ -465,7 +542,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'PLAN DE GENE SONORE AERIEN<br /><table><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_5_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_5_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_5_32.png" /></td><td>3</td></tr></table>': layer_PLANDEGENESONOREAERIEN_5,'MAISON<br /><table><tr><td style="text-align: center;"><img src="legend/MAISON_4_Nous0.png" /></td><td>Nous</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_4_TravailMAMAN1.png" /></td><td>Travail MAMAN</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_4_TravailPAPA2.png" /></td><td>Travail PAPA</td></tr></table>': layer_MAISON_4,'Rayon Travail<br /><table><tr><td style="text-align: center;"><img src="legend/RayonTravail_3_5Kms0.png" /></td><td>5 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_3_10Kms1.png" /></td><td>10 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_3_15Kms2.png" /></td><td>15 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_3_20Kms3.png" /></td><td>20 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_3_25Kms4.png" /></td><td>25 Kms</td></tr></table>': layer_RayonTravail_3,'<img src="legend/COMM_secteur_2.png" /> COMM_secteur': layer_COMM_secteur_2,"Google Road": layer_GoogleRoad_1,"Google Hybrid": layer_GoogleHybrid_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'PLAN DE GENE SONORE AERIEN<br /><table><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_32.png" /></td><td>3</td></tr></table>': layer_PLANDEGENESONOREAERIEN_6,'MAISON<br /><table><tr><td style="text-align: center;"><img src="legend/MAISON_5_Nous0.png" /></td><td>Nous</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailMAMAN1.png" /></td><td>Travail MAMAN</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailPAPA2.png" /></td><td>Travail PAPA</td></tr></table>': layer_MAISON_5,'Rayon Travail<br /><table><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_5Kms0.png" /></td><td>5 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_10Kms1.png" /></td><td>10 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_15Kms2.png" /></td><td>15 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_20Kms3.png" /></td><td>20 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_25Kms4.png" /></td><td>25 Kms</td></tr></table>': layer_RayonTravail_4,'<img src="legend/VOIEFERREE_3.png" /> VOIE FERREE': layer_VOIEFERREE_3,'<img src="legend/COMM_secteur_2.png" /> COMM_secteur': layer_COMM_secteur_2,"Google Road": layer_GoogleRoad_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_COMM_secteur_2.eachLayer(function(layer) {
