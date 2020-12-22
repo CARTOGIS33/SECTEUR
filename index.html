@@ -43,7 +43,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[44.626518954895175,-1.0642366907052794],[44.928765118867034,-0.3311635863922399]]);
+        }).fitBounds([[44.60029460553864,-1.0614135685336],[44.922041929545635,-0.2809604814395113]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -113,7 +113,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(164,113,88,0.0)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_COMM_secteur_2');
@@ -121,7 +121,7 @@
         map.getPane('pane_COMM_secteur_2').style['mix-blend-mode'] = 'normal';
         var layer_COMM_secteur_2 = new L.geoJson(json_COMM_secteur_2, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_COMM_secteur_2',
             layerName: 'layer_COMM_secteur_2',
             pane: 'pane_COMM_secteur_2',
@@ -179,7 +179,7 @@
                 lineJoin: 'round',
                 weight: 3.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_VOIEFERREE_3');
@@ -187,7 +187,7 @@
         map.getPane('pane_VOIEFERREE_3').style['mix-blend-mode'] = 'normal';
         var layer_VOIEFERREE_3 = new L.geoJson(json_VOIEFERREE_3, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_VOIEFERREE_3',
             layerName: 'layer_VOIEFERREE_3',
             pane: 'pane_VOIEFERREE_3',
@@ -268,7 +268,7 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.4,
+                fillOpacity:0.4,
                 fillColor: 'rgba(248,89,100,0.9)',
                 interactive: false,
             }
@@ -366,6 +366,23 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(237,139,89,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kévin':
+                    return {
+                pane: 'pane_MAISON_5',
+                shape: 'triangle',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(61,128,53,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(175,70,217,1.0)',
                 interactive: true,
             }
                     break;
@@ -542,7 +559,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'PLAN DE GENE SONORE AERIEN<br /><table><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_32.png" /></td><td>3</td></tr></table>': layer_PLANDEGENESONOREAERIEN_6,'MAISON<br /><table><tr><td style="text-align: center;"><img src="legend/MAISON_5_Nous0.png" /></td><td>Nous</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailMAMAN1.png" /></td><td>Travail MAMAN</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailPAPA2.png" /></td><td>Travail PAPA</td></tr></table>': layer_MAISON_5,'Rayon Travail<br /><table><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_5Kms0.png" /></td><td>5 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_10Kms1.png" /></td><td>10 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_15Kms2.png" /></td><td>15 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_20Kms3.png" /></td><td>20 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_25Kms4.png" /></td><td>25 Kms</td></tr></table>': layer_RayonTravail_4,'<img src="legend/VOIEFERREE_3.png" /> VOIE FERREE': layer_VOIEFERREE_3,'<img src="legend/COMM_secteur_2.png" /> COMM_secteur': layer_COMM_secteur_2,"Google Road": layer_GoogleRoad_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
+        L.control.layers(baseMaps,{'PLAN DE GENE SONORE AERIEN<br /><table><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/PLANDEGENESONOREAERIEN_6_32.png" /></td><td>3</td></tr></table>': layer_PLANDEGENESONOREAERIEN_6,'MAISON<br /><table><tr><td style="text-align: center;"><img src="legend/MAISON_5_Nous0.png" /></td><td>Nous</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailMAMAN1.png" /></td><td>Travail MAMAN</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_TravailPAPA2.png" /></td><td>Travail PAPA</td></tr><tr><td style="text-align: center;"><img src="legend/MAISON_5_Kévin3.png" /></td><td>Kévin</td></tr></table>': layer_MAISON_5,'Rayon Travail<br /><table><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_5Kms0.png" /></td><td>5 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_10Kms1.png" /></td><td>10 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_15Kms2.png" /></td><td>15 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_20Kms3.png" /></td><td>20 Kms</td></tr><tr><td style="text-align: center;"><img src="legend/RayonTravail_4_25Kms4.png" /></td><td>25 Kms</td></tr></table>': layer_RayonTravail_4,'<img src="legend/VOIEFERREE_3.png" /> VOIE FERREE': layer_VOIEFERREE_3,'<img src="legend/COMM_secteur_2.png" /> COMM_secteur': layer_COMM_secteur_2,"Google Road": layer_GoogleRoad_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_COMM_secteur_2.eachLayer(function(layer) {
